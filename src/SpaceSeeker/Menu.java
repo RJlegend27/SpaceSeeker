@@ -6,7 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,6 +26,8 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 	Timer timer;
 	static final int HEIGHT = 500;
 	static final int WIDTH = 500;
+	public static BufferedImage GameBackground;
+	public static BufferedImage MenuBackground;
 	SpaceSeeker spaceSeeker;
 	private boolean mousePressed;
 	private Graphics g;
@@ -50,6 +55,20 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 		frame.addMouseListener(this);
 		start();
 
+		try {
+			MenuBackground = ImageIO.read(this.getClass().getResourceAsStream("Space Seeker Background (2).png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			GameBackground = ImageIO.read(this.getClass().getResourceAsStream("Space Seeker Game Background.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+
 	}
 
 	void start() {
@@ -62,19 +81,9 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 	}
 
 	void drawMenu(Graphics g) {
-
-		g.setColor(Color.BLUE);
-		g.fillRect(0, 0, 100, 500);
-		g.setColor(Color.CYAN);
-		g.fillRect(100, 0, 100, 500);
-		g.setColor(Color.lightGray);
-		g.fillRect(200, 0, 100, 500);
-		g.setColor(Color.CYAN);
-		g.fillRect(300, 0, 100, 500);
-		g.setColor(Color.BLUE);
-		g.fillRect(400, 0, 100, 500);
-
+	g.drawImage(MenuBackground, 0, 0, null);
 	}
+		
 
 	@Override
 	public void paintComponent(Graphics g) {
@@ -90,9 +99,16 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 	}
 
 	void drawGame(Graphics g) {
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, 500, 500);
+		g.drawImage(GameBackground, 0, 0, null);
 	}
+	
+	/*try {
+			GameBackground = ImageIO.read(this.getClass().getResourceAsStream("Space Seeker Game Background.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+	
 
 	void drawEnd(Graphics g) {
 		g.setColor(Color.ORANGE);
@@ -103,12 +119,11 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		repaint();
-		if (e.getSource() == button && currentState == GAME_STATE) {
-			
+		if (e.getSource() == button && currentState == MENU_STATE) {
 				drawGame(g);
-			} else if (currentState == END_STATE) {
+			} else if (currentState == GAME_STATE) {
 				drawEnd(g);
-			} else if (currentState == MENU_STATE) {
+			} else if (currentState == END_STATE) {
 				drawMenu(g);
 			}
 
