@@ -29,9 +29,10 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 	public static BufferedImage GameBackground;
 	public static BufferedImage MenuBackground;
 	public static BufferedImage EndBackground;
-	SpaceSeeker spaceSeeker;
+	//SpaceSeeker spaceSeeker;
 	private boolean mousePressed;
 	private Graphics g;
+	//SpaceSeeker rocket = new SpaceSeeker();
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -46,7 +47,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 	}
 
 	Menu() {
-		spaceSeeker = new SpaceSeeker();
+	//	spaceSeeker = new SpaceSeeker();
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		button = new JButton("START");
