@@ -28,6 +28,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 	static final int WIDTH = 500;
 	public static BufferedImage GameBackground;
 	public static BufferedImage MenuBackground;
+	public static BufferedImage EndBackground;
 	SpaceSeeker spaceSeeker;
 	private boolean mousePressed;
 	private Graphics g;
@@ -67,8 +68,12 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-
+		try {
+			EndBackground = ImageIO.read(this.getClass().getResourceAsStream("EndScreen.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	void start() {
@@ -81,9 +86,8 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 	}
 
 	void drawMenu(Graphics g) {
-	g.drawImage(MenuBackground, 0, 0, null);
+		g.drawImage(MenuBackground, 0, 0, null);
 	}
-		
 
 	@Override
 	public void paintComponent(Graphics g) {
@@ -101,31 +105,46 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 	void drawGame(Graphics g) {
 		g.drawImage(GameBackground, 0, 0, null);
 	}
-	
-	/*try {
-			GameBackground = ImageIO.read(this.getClass().getResourceAsStream("Space Seeker Game Background.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-	
+
+	/*
+	 * try { GameBackground = ImageIO.read(this.getClass().
+	 * getResourceAsStream("Space Seeker Game Background.png")); } catch
+	 * (IOException e) { // TODO Auto-generated catch block e.printStackTrace(); }
+	 */
 
 	void drawEnd(Graphics g) {
-		g.setColor(Color.ORANGE);
-		g.fillRect(0, 0, 500, 500);
+		g.drawImage(EndBackground, 0, 0, null);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		repaint();
-		if (e.getSource() == button && currentState == MENU_STATE) {
-				drawGame(g);
+		if (e.getSource() == button) {
+
+			if (currentState == MENU_STATE) {
+				currentState = GAME_STATE;
+				
 			} else if (currentState == GAME_STATE) {
-				drawEnd(g);
+				currentState = END_STATE;
 			} else if (currentState == END_STATE) {
-				drawMenu(g);
+				currentState = MENU_STATE;
 			}
+		}
+	}
+
+	private void updateMenu() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void updateEnd() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void updateGame() {
+		// TODO Auto-generated method stub
 
 	}
 
