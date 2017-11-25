@@ -41,13 +41,14 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 			public void run() {
 				// TODO Auto-generated method stub
 				new Menu();
+				
 			}
 		});
 
 	}
 
 	Menu() {
-	//	spaceSeeker = new SpaceSeeker();
+		//SpaceSeeker rocket = new SpaceSeeker();
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		button = new JButton("START");
@@ -125,7 +126,6 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 
 			if (currentState == MENU_STATE) {
 				currentState = GAME_STATE;
-				
 			} else if (currentState == GAME_STATE) {
 				currentState = END_STATE;
 			} else if (currentState == END_STATE) {
