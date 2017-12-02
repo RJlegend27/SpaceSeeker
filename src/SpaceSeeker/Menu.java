@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -16,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
-public class Menu extends JPanel implements ActionListener, MouseListener {
+public class Menu extends JPanel implements ActionListener, MouseListener, KeyListener {
 	final int MENU_STATE = 0;
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
@@ -24,15 +26,18 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 	JFrame frame;
 	JButton button;
 	Timer timer;
+	JButton instruct;
 	static final int HEIGHT = 500;
 	static final int WIDTH = 500;
 	public static BufferedImage GameBackground;
 	public static BufferedImage MenuBackground;
 	public static BufferedImage EndBackground;
-	//SpaceSeeker spaceSeeker;
+	public static BufferedImage Rocketship;
+	public static BufferedImage RocketMove;
+	// SpaceSeeker spaceSeeker;
 	private boolean mousePressed;
 	private Graphics g;
-	//SpaceSeeker rocket = new SpaceSeeker();
+	// SpaceSeeker rocket = new SpaceSeeker();
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -41,14 +46,14 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 			public void run() {
 				// TODO Auto-generated method stub
 				new Menu();
-				
+
 			}
 		});
 
 	}
 
 	Menu() {
-		//SpaceSeeker rocket = new SpaceSeeker();
+		// SpaceSeeker rocket = new SpaceSeeker();
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		button = new JButton("START");
@@ -56,6 +61,10 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 		button.addActionListener(this);
 		button.setVisible(true);
 		frame.addMouseListener(this);
+		//instruct = new JButton("HELP");
+		//this.add(instruct);
+		//instruct.addActionListener(this);
+		//instruct.setVisible(true);
 		start();
 
 		try {
@@ -76,6 +85,19 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		try {
+			Rocketship = ImageIO.read(this.getClass().getResourceAsStream("Rocket.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			RocketMove = ImageIO.read(this.getClass().getResourceAsStream("RocketMove.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	void start() {
@@ -90,6 +112,10 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 	void drawMenu(Graphics g) {
 		g.drawImage(MenuBackground, 0, 0, null);
 	}
+	public void drawRocket(Graphics g) {
+		g.drawImage(Rocketship, 100, 100, null);
+		
+	}
 
 	@Override
 	public void paintComponent(Graphics g) {
@@ -101,7 +127,10 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 		} else if (currentState == END_STATE) {
 			drawEnd(g);
 		}
-
+		if(currentState == GAME_STATE) {
+			drawRocket(g);
+		}
+		
 	}
 
 	void drawGame(Graphics g) {
@@ -131,6 +160,12 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 			} else if (currentState == END_STATE) {
 				currentState = MENU_STATE;
 			}
+
+			if (currentState == GAME_STATE) {
+				button.hide();
+
+			}
+
 		}
 	}
 
@@ -178,4 +213,21 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 
 	}
 
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
 }
