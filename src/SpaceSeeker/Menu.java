@@ -93,7 +93,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		}
 		
 		try {
-			RocketMove = ImageIO.read(this.getClass().getResourceAsStream("RocketMove.png"));
+			RocketMove = ImageIO.read(this.getClass().getResourceAsStream("RocketGo.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
