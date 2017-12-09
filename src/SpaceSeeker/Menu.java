@@ -26,6 +26,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	JFrame frame;
 	JButton button;
 	Timer timer;
+	JPanel panel;
 	JButton instruct;
 	static final int HEIGHT = 500;
 	static final int WIDTH = 500;
@@ -36,6 +37,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	public static BufferedImage RocketMove;
 	// SpaceSeeker spaceSeeker;
 	private boolean mousePressed;
+	Rocket rocket = new Rocket();
 	private Graphics g;
 	// SpaceSeeker rocket = new SpaceSeeker();
 
@@ -56,11 +58,14 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		// SpaceSeeker rocket = new SpaceSeeker();
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		button = new JButton("START");
-		this.add(button);
-		button.addActionListener(this);
-		button.setVisible(true);
+		//button = new JButton("START");
+		//this.add(button);
+		//button.addActionListener(this);
+		//button.setVisible(true);
 		frame.addMouseListener(this);
+		panel = new JPanel();
+	
+		frame.add(panel);
 		//instruct = new JButton("HELP");
 		//this.add(instruct);
 		//instruct.addActionListener(this);
@@ -106,6 +111,8 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		frame.add(this);
 		frame.setSize(WIDTH, HEIGHT);
 		frame.setVisible(true);
+		System.out.println("aa");
+		frame.addKeyListener(this);
 
 	}
 
@@ -151,22 +158,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		repaint();
-		if (e.getSource() == button) {
-
-			if (currentState == MENU_STATE) {
-				currentState = GAME_STATE;
-			} else if (currentState == GAME_STATE) {
-				currentState = END_STATE;
-			} else if (currentState == END_STATE) {
-				currentState = MENU_STATE;
-			}
-
-			if (currentState == GAME_STATE) {
-				button.hide();
-
-			}
-
-		}
+		
 	}
 
 	private void updateMenu() {
@@ -181,7 +173,10 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 
 	private void updateGame() {
 		// TODO Auto-generated method stub
-
+		if (currentState == GAME_STATE) {
+			
+			
+		}
 	}
 
 	@Override
@@ -213,21 +208,49 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 
 	}
 
-	@Override
+
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 
 	}
-}
+
+
+	public void keyPressed(KeyEvent e) {
+	
+		if (currentState == MENU_STATE) {
+			if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+			if (currentState == MENU_STATE) {
+				currentState = GAME_STATE;
+			} else if (currentState == GAME_STATE) {
+				currentState = END_STATE;
+			} else if (currentState == END_STATE) {
+				currentState = MENU_STATE;
+			}
+
+			if (currentState == GAME_STATE) {
+				
+
+			}
+			}
+		}
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			System.out.println("Right");
+			
+		}
+		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			System.out.println("Left");
+		}
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			System.out.println("Up");
+		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			System.out.println("Down");
+		}
+		}
+	}
+

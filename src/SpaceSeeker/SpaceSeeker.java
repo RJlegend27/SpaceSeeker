@@ -26,7 +26,7 @@ public class SpaceSeeker extends Menu{
 			public void run() {
 				// TODO Auto-generated method stub
 				new SpaceSeeker();
-				paintComponent(null);
+				
 			}
 		});
 
