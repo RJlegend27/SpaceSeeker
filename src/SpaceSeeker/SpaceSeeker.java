@@ -11,7 +11,7 @@ import javax.swing.SwingUtilities;
 public class SpaceSeeker extends Menu{
 	public static BufferedImage Rocketship;
 	public static BufferedImage RocketMove;
-	Rocket rocket = new Rocket();
+	
 	
 	
 	SpaceSeeker() {
