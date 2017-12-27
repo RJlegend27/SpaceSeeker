@@ -29,22 +29,21 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	Timer timer;
 	JPanel panel;
 	JButton instruct;
-	
-		
-		
+
 	static final int HEIGHT = 500;
 	static final int WIDTH = 500;
 	public static BufferedImage GameBackground;
 	public static BufferedImage MenuBackground;
 	public static BufferedImage EndBackground;
 	public static BufferedImage Rocketship;
-	public static BufferedImage RocketMove;
+	public static BufferedImage RocketLeft;
+	public static BufferedImage RocketRight;
+	public static BufferedImage RocketGo;
 	public static BufferedImage CurrentRocket;
-	
+
 	// SpaceSeeker spaceSeeker;
 	private boolean mousePressed;
-	
-	
+
 	Rocket rocket = new Rocket();
 	private Graphics g;
 	// SpaceSeeker rocket = new SpaceSeeker();
@@ -66,20 +65,20 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		// SpaceSeeker rocket = new SpaceSeeker();
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//button = new JButton("START");
-		//this.add(button);
-		//button.addActionListener(this);
-		//button.setVisible(true);
+		// button = new JButton("START");
+		// this.add(button);
+		// button.addActionListener(this);
+		// button.setVisible(true);
 		frame.addMouseListener(this);
 		panel = new JPanel();
-	
+
 		frame.add(panel);
-		//instruct = new JButton("HELP");
-		//this.add(instruct);
-		//instruct.addActionListener(this);
-		//instruct.setVisible(true);
+		// instruct = new JButton("HELP");
+		// this.add(instruct);
+		// instruct.addActionListener(this);
+		// instruct.setVisible(true);
 		start();
-		//move(rocketx, rockety);
+		// move(rocketx, rockety);
 
 		try {
 			MenuBackground = ImageIO.read(this.getClass().getResourceAsStream("Space Seeker Background (2).png"));
@@ -100,16 +99,30 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 			e.printStackTrace();
 		}
 		try {
-			Rocketship = ImageIO.read(this.getClass().getResourceAsStream("Rocket.png"));
+			Rocketship = ImageIO.read(this.getClass().getResourceAsStream("NewRocket.png"));
 			CurrentRocket = Rocketship;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		try {
-			RocketMove = ImageIO.read(this.getClass().getResourceAsStream("RocketGo.png"));
-			
+			RocketLeft = ImageIO.read(this.getClass().getResourceAsStream("NewRocketLeft.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			RocketRight = ImageIO.read(this.getClass().getResourceAsStream("NewRocketRight.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			RocketGo = ImageIO.read(this.getClass().getResourceAsStream("NewRocketGo.png"));
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -126,17 +139,14 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		frame.addKeyListener(this);
 
 	}
-	
-	
-
-	
 
 	void drawMenu(Graphics g) {
 		g.drawImage(MenuBackground, 0, 0, null);
 	}
+
 	public void drawRocket(Graphics g) {
 		g.drawImage(CurrentRocket, rocket.x, rocket.y, null);
-		
+
 	}
 
 	@Override
@@ -149,10 +159,10 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		} else if (currentState == END_STATE) {
 			drawEnd(g);
 		}
-		if(currentState == GAME_STATE) {
+		if (currentState == GAME_STATE) {
 			drawRocket(g);
 		}
-		
+
 	}
 
 	void drawGame(Graphics g) {
@@ -174,7 +184,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		// TODO Auto-generated method stub
 		repaint();
 		updateGame();
-		
+
 	}
 
 	private void updateMenu() {
@@ -191,9 +201,9 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		// TODO Auto-generated method stub
 		if (currentState == GAME_STATE) {
 			rocket.move();
-			
+
 		}
-		
+
 	}
 
 	@Override
@@ -225,7 +235,6 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 
 	}
 
-
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 
@@ -251,47 +260,43 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		}
 	}
 
-
 	public void keyPressed(KeyEvent e) {
-	
+
 		if (currentState == MENU_STATE) {
-			if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-			if (currentState == MENU_STATE) {
-				currentState = GAME_STATE;
-			} else if (currentState == GAME_STATE) {
-				currentState = END_STATE;
-			} else if (currentState == END_STATE) {
-				currentState = MENU_STATE;
-			}
+			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+				if (currentState == MENU_STATE) {
+					currentState = GAME_STATE;
+				} else if (currentState == GAME_STATE) {
+					currentState = END_STATE;
+				} else if (currentState == END_STATE) {
+					currentState = MENU_STATE;
+				}
 
-			if (currentState == GAME_STATE) {
-				
+				if (currentState == GAME_STATE) {
 
-			}
+				}
 			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			System.out.println("Right");
 			rocket.right = true;
-			CurrentRocket = RocketMove;
-			
-			
+			CurrentRocket = RocketRight;
+
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			System.out.println("Left");
 			rocket.left = true;
-			CurrentRocket = RocketMove;
+			CurrentRocket = RocketLeft;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			System.out.println("Up");
 			rocket.up = true;
-			CurrentRocket = RocketMove;
+			CurrentRocket = RocketGo;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			System.out.println("Down");
 			rocket.down = true;
-			CurrentRocket = RocketMove;
-		}
+			CurrentRocket = RocketGo;
 		}
 	}
-
+}
