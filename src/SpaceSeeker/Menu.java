@@ -40,7 +40,11 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	public static BufferedImage RocketRight;
 	public static BufferedImage RocketGo;
 	public static BufferedImage CurrentRocket;
-
+	public static BufferedImage Clone;
+	public static BufferedImage Seeker;
+	public static BufferedImage CurrentAlien;
+	int alienx = 125;
+	int alieny = 125;
 	// SpaceSeeker spaceSeeker;
 	private boolean mousePressed;
 
@@ -127,6 +131,22 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	
+	try {
+		Clone = ImageIO.read(this.getClass().getResourceAsStream("Clone.png"));
+
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	try {
+		Seeker = ImageIO.read(this.getClass().getResourceAsStream("Seeker.png"));
+
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	}
 
 	void start() {
@@ -147,6 +167,9 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	public void drawRocket(Graphics g) {
 		g.drawImage(CurrentRocket, rocket.x, rocket.y, null);
 
+	}
+	public void drawAlien(Graphics g) {
+		g.drawImage(Clone, alienx, alieny, null);
 	}
 
 	@Override
@@ -266,6 +289,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 				if (currentState == MENU_STATE) {
 					currentState = GAME_STATE;
+					CurrentAlien = Clone;
 				} else if (currentState == GAME_STATE) {
 					currentState = END_STATE;
 				} else if (currentState == END_STATE) {
