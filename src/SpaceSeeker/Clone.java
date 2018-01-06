@@ -9,22 +9,9 @@ import javax.imageio.ImageIO;
 import javax.swing.SwingUtilities;
 
 public class Clone {
-	
-	
-	int x = 0;
-	int y = -1;
-	int speed = 3;
-	
-	
-	
-	
 
-	
-	
-	
+	int x = 0;
+	int y = 10;
 	
 	
 }
-
-
-

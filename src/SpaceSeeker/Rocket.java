@@ -13,8 +13,8 @@ public class Rocket {
 
 
 
-	int x = 0;
-	int y = 0;
+	int x = 150;
+	int y = 150;
 	int speed = 3;
 	public boolean up;
 	public boolean down;
