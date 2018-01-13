@@ -228,7 +228,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		if (currentState == GAME_STATE) {
 			rocket.move();
 			clone.invade();
-		
+			seeker.invade();
 		}
 
 	}
