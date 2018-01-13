@@ -11,13 +11,18 @@ import javax.swing.SwingUtilities;
 public class Clone {
 
 	int x = 0;
-	int y = -350;
-	int speed = 3;
+	int y = 0;
+	int speed = 5;
+	int xspeed = 10;
 	
 	void invade() {
 		y+=speed;
-		if(y == 700) {
-			y = -350;
+		x+=xspeed;
+		if(x > 480 || x < 0) {
+			xspeed = -xspeed;
+		}
+		if(y > 480 || y < 0) {
+			speed = -speed;
 		}
 		
 	}

@@ -134,7 +134,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		}
 	
 	try {
-		Clone = ImageIO.read(this.getClass().getResourceAsStream("CloneTogether.png"));
+		Clone = ImageIO.read(this.getClass().getResourceAsStream("Clone.png"));
 
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
