@@ -43,12 +43,13 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	public static BufferedImage Seeker;
 	public static BufferedImage CurrentAlien;
 
-	int alienx = 20;
-	int alieny = 20;
+	
 	// SpaceSeeker spaceSeeker;
 	private boolean mousePressed;
 
 	Rocket rocket = new Rocket();
+	Clone clone = new Clone();
+	Seeker seeker = new Seeker();
 	private Graphics g;
 	// SpaceSeeker rocket = new SpaceSeeker();
 
@@ -169,7 +170,8 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 
 	}
 	public void drawAlien(Graphics g) {
-		g.drawImage(Clone, alienx, alieny, null);
+		g.drawImage(Clone, clone.x, clone.y, null);
+		g.drawImage(Seeker, seeker.x, seeker.y,  null);
 	}
 
 	@Override
@@ -225,7 +227,8 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		// TODO Auto-generated method stub
 		if (currentState == GAME_STATE) {
 			rocket.move();
-
+			clone.invade();
+		
 		}
 
 	}
@@ -298,7 +301,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 				}
 
 				if (currentState == GAME_STATE) {
-
+					
 				}
 			}
 		}

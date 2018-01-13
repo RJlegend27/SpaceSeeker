@@ -11,7 +11,15 @@ import javax.swing.SwingUtilities;
 public class Clone {
 
 	int x = 0;
-	int y = 10;
+	int y = -350;
+	int speed = 5;
 	
-	
+	void invade() {
+		y+=speed;
+		if(y == 500) {
+			y = -350;
+		}
+		
+	}
 }
+
