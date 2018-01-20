@@ -8,10 +8,6 @@ public class Seeker {
 	int xspeed = 5;
 	void invade() {
 		
-		for(int i = 0; i < 500 ; i++){
-			y+=speed;
-			x+=xspeed;	
-		}
 		
 
 
