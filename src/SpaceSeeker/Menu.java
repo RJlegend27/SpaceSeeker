@@ -40,6 +40,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	public static BufferedImage RocketGo;
 	public static BufferedImage CurrentRocket;
 	public static BufferedImage Clone;
+	public static BufferedImage CloneTogether;
 	public static BufferedImage Seeker;
 	public static BufferedImage CurrentAlien;
 
@@ -50,6 +51,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	Rocket rocket = new Rocket();
 	Clone clone = new Clone();
 	Seeker seeker = new Seeker();
+	CloneTogether cloneTogether = new CloneTogether();
 	private Graphics g;
 	// SpaceSeeker rocket = new SpaceSeeker();
 
@@ -134,7 +136,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		}
 	
 	try {
-		Clone = ImageIO.read(this.getClass().getResourceAsStream("Clone.png"));
+		Clone = ImageIO.read(this.getClass().getResourceAsStream("clone.png"));
 
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
@@ -143,6 +145,13 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	
 	try {
 		Seeker = ImageIO.read(this.getClass().getResourceAsStream("Seeker.png"));
+
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	try {
+		CloneTogether = ImageIO.read(this.getClass().getResourceAsStream("CloneTogether.png"));
 
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
@@ -172,6 +181,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	public void drawAlien(Graphics g) {
 		g.drawImage(Clone, clone.x, clone.y, null);
 		g.drawImage(Seeker, seeker.x, seeker.y,  null);
+		g.drawImage(CloneTogether, cloneTogether.x, cloneTogether.y, null);
 	}
 
 	@Override
@@ -229,6 +239,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 			rocket.move();
 			clone.invade();
 			seeker.invade();
+			cloneTogether.invade();
 		}
 
 	}

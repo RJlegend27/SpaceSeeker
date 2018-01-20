@@ -8,23 +8,15 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.SwingUtilities;
 
-public class Clone {
+public class CloneTogether {
 
-	int x = 0;
-	int y = 0;
-	int speed = 5;
+	int x = 180;
+	int y = 50;
+	int speed = 1;
 	int xspeed = 10;
 	
 	void invade() {
 		y+=speed;
-		x+=xspeed;
-		if(x > 410 || x < -50) {
-			xspeed = -xspeed;
-		}
-		if(y > 400 || y < -50) {
-			speed = -speed;
-		}
 		
 	}
 }
-
