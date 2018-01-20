@@ -12,7 +12,7 @@ public class Clone {
 
 	int x = 0;
 	int y = 0;
-	int speed = 5;
+	int speed = 1;
 	int xspeed = 10;
 	
 	void invade() {
