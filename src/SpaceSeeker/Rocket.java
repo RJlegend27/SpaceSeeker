@@ -41,6 +41,19 @@ public class Rocket {
 		{
 			y += speed;
 		}
+		if(x>438) {
+			x = 438;
+		}
+		if(x < -29) {
+			x = -29;
+		}
+		if(y < -25) {
+			y = -25;
+		}
+		if(y > 407) {
+			y = 407;
+		}
+		
 	}
 
 	}

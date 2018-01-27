@@ -180,7 +180,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	}
 	public void drawAlien(Graphics g) {
 		g.drawImage(Clone, clone.x, clone.y, null);
-		g.drawImage(Seeker, seeker.x, seeker.y,  null);
+		//g.drawImage(Seeker, seeker.x, seeker.y,  null);
 		g.drawImage(CloneTogether, cloneTogether.x, cloneTogether.y, null);
 	}
 
