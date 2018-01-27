@@ -43,6 +43,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	public static BufferedImage CloneTogether;
 	public static BufferedImage Seeker;
 	public static BufferedImage CurrentAlien;
+	public static BufferedImage Laser;
 
 	
 	// SpaceSeeker spaceSeeker;
@@ -52,6 +53,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	Clone clone = new Clone();
 	Seeker seeker = new Seeker();
 	CloneTogether cloneTogether = new CloneTogether();
+	Laser laser = new Laser();
 	private Graphics g;
 	// SpaceSeeker rocket = new SpaceSeeker();
 
@@ -157,6 +159,13 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	try {
+		Laser = ImageIO.read(this.getClass().getResourceAsStream("Laser.png"));
+
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	}
 
 	void start() {
@@ -179,9 +188,10 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 
 	}
 	public void drawAlien(Graphics g) {
-		g.drawImage(Clone, clone.x, clone.y, null);
+		g.drawImage(Clone, (int)clone.x, (int)clone.y, null);
 		//g.drawImage(Seeker, seeker.x, seeker.y,  null);
 		g.drawImage(CloneTogether, cloneTogether.x, cloneTogether.y, null);
+		g.drawImage(Laser, laser.x, laser.y, null);
 	}
 
 	@Override
@@ -240,6 +250,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 			clone.invade();
 			seeker.invade();
 			cloneTogether.invade();
+			laser.invade();
 		}
 
 	}
