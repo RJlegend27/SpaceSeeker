@@ -2,7 +2,8 @@ package SpaceSeeker;
 
 import java.util.Random;
 
-public class Laser {
+public class Laser2 {
+
 	Random r = new Random();
 	int y = r.nextInt(260) + 20;
 	int x = 100;
@@ -10,8 +11,8 @@ public class Laser {
 	int xspeed = 10;
 
 	void invade() {
-		y+=speed;
-		x+=xspeed;
+		y += speed;
+		x += xspeed;
 		if (x > 2000) {
 			x = -10;
 		}
@@ -20,6 +21,5 @@ public class Laser {
 			 y = r.nextInt(260) + 20;
 		}
 	}
-	
 
 }

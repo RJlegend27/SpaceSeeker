@@ -44,8 +44,13 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	public static BufferedImage Seeker;
 	public static BufferedImage CurrentAlien;
 	public static BufferedImage Laser;
-
-	
+	public static BufferedImage Warning;
+	public static BufferedImage Warning2;
+	public static BufferedImage Warning3;
+	public static BufferedImage Warning4;
+	public static BufferedImage Laser2;
+	public static BufferedImage Laser3;
+	public static BufferedImage Laser4;
 	// SpaceSeeker spaceSeeker;
 	private boolean mousePressed;
 
@@ -54,6 +59,8 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	Seeker seeker = new Seeker();
 	CloneTogether cloneTogether = new CloneTogether();
 	Laser laser = new Laser();
+	Laser2 laser2 = new Laser2();
+	Laser3 laser3 = new Laser3();
 	private Graphics g;
 	// SpaceSeeker rocket = new SpaceSeeker();
 
@@ -136,36 +143,78 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-	try {
-		Clone = ImageIO.read(this.getClass().getResourceAsStream("clone.png"));
 
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
-	try {
-		Seeker = ImageIO.read(this.getClass().getResourceAsStream("Seeker.png"));
+		try {
+			Clone = ImageIO.read(this.getClass().getResourceAsStream("clone.png"));
 
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	try {
-		CloneTogether = ImageIO.read(this.getClass().getResourceAsStream("CloneTogether.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	try {
-		Laser = ImageIO.read(this.getClass().getResourceAsStream("Laser.png"));
+		try {
+			Seeker = ImageIO.read(this.getClass().getResourceAsStream("Seeker.png"));
 
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			CloneTogether = ImageIO.read(this.getClass().getResourceAsStream("CloneTogether.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Laser = ImageIO.read(this.getClass().getResourceAsStream("Laser.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Warning = ImageIO.read(this.getClass().getResourceAsStream("Warning.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Warning2 = ImageIO.read(this.getClass().getResourceAsStream("Warning.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Laser2 = ImageIO.read(this.getClass().getResourceAsStream("Laser.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Warning3 = ImageIO.read(this.getClass().getResourceAsStream("Warning.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Laser3 = ImageIO.read(this.getClass().getResourceAsStream("Laser.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Warning4 = ImageIO.read(this.getClass().getResourceAsStream("Warning.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	void start() {
@@ -187,11 +236,24 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		g.drawImage(CurrentRocket, rocket.x, rocket.y, null);
 
 	}
+
 	public void drawAlien(Graphics g) {
-		g.drawImage(Clone, (int)clone.x, (int)clone.y, null);
-		//g.drawImage(Seeker, seeker.x, seeker.y,  null);
+		g.drawImage(Clone, (int) clone.x, (int) clone.y, null);
+		// g.drawImage(Seeker, seeker.x, seeker.y, null);
 		g.drawImage(CloneTogether, cloneTogether.x, cloneTogether.y, null);
 		g.drawImage(Laser, laser.x, laser.y, null);
+		g.drawImage(Laser2, laser2.x, laser2.y, null);
+		g.drawImage(Laser3, laser3.x, laser3.y, null);
+		
+		if (laser.x > 800 ) {
+			g.drawImage(Warning, 20, laser.y, null);
+		}
+		if (laser2.x > 800 ) {
+			g.drawImage(Warning2, 20, laser2.y, null);
+		}
+		if (laser3.x > 800 ) {
+			g.drawImage(Warning3, 20, laser3.y, null);
+		}
 	}
 
 	@Override
@@ -251,6 +313,8 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 			seeker.invade();
 			cloneTogether.invade();
 			laser.invade();
+			laser2.invade();
+			laser3.invade();
 		}
 
 	}
@@ -315,7 +379,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 				if (currentState == MENU_STATE) {
 					currentState = GAME_STATE;
-					
+
 				} else if (currentState == GAME_STATE) {
 					currentState = END_STATE;
 				} else if (currentState == END_STATE) {
@@ -323,7 +387,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 				}
 
 				if (currentState == GAME_STATE) {
-					
+
 				}
 			}
 		}
@@ -348,9 +412,9 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 			rocket.down = true;
 			CurrentRocket = RocketGo;
 		}
-//		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-//			System.out.println("TAKE ME TO YOUR LEADER");
-//			drawAlien(g);
-//		}
+		// if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+		// System.out.println("TAKE ME TO YOUR LEADER");
+		// drawAlien(g);
+		// }
 	}
 }
