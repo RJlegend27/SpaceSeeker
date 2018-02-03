@@ -51,6 +51,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	public static BufferedImage Laser2;
 	public static BufferedImage Laser3;
 	public static BufferedImage Laser4;
+	public static BufferedImage Follower;
 	// SpaceSeeker spaceSeeker;
 	private boolean mousePressed;
 
@@ -61,6 +62,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	Laser laser = new Laser();
 	Laser2 laser2 = new Laser2();
 	Laser3 laser3 = new Laser3();
+	Follower follower = new Follower();
 	private Graphics g;
 	// SpaceSeeker rocket = new SpaceSeeker();
 
@@ -214,6 +216,12 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}try {
+			Follower = ImageIO.read(this.getClass().getResourceAsStream("Follower.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -244,6 +252,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		g.drawImage(Laser, laser.x, laser.y, null);
 		g.drawImage(Laser2, laser2.x, laser2.y, null);
 		g.drawImage(Laser3, laser3.x, laser3.y, null);
+		g.drawImage(Follower, follower.x, follower.y, null);
 		
 		if (laser.x > 800 ) {
 			g.drawImage(Warning, 20, laser.y, null);
