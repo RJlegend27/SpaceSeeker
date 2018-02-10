@@ -8,10 +8,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.SwingUtilities;
 
-public class Clone {
+public class Clone3 {
 
-	float x = 270;
-	float y = 100;
+	float x = 420;
+	float y = 200;
 	float speed = 5;
 	int xspeed = 5;
 	float i = 1;

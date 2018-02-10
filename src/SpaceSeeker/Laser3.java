@@ -19,7 +19,7 @@ public class Laser3 {
 			}
 			if(x == 600) {
 				Random r = new Random();
-				 y = r.nextInt(260) + 20;
+				 y = r.nextInt(300) + 20;
 			}
 		}
 		

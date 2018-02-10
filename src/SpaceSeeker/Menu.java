@@ -52,17 +52,28 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	public static BufferedImage Laser3;
 	public static BufferedImage Laser4;
 	public static BufferedImage Follower;
+	public static BufferedImage CloneTogether2;
+	public static BufferedImage CloneTogether3;
+	public static BufferedImage Bullet;
+	public static BufferedImage Clone2;
+	public static BufferedImage Clone3;
 	// SpaceSeeker spaceSeeker;
 	private boolean mousePressed;
 
 	Rocket rocket = new Rocket();
 	Clone clone = new Clone();
+	Clone2 clone2 = new Clone2();
+	Clone3 clone3 = new Clone3();
 	Seeker seeker = new Seeker();
 	CloneTogether cloneTogether = new CloneTogether();
 	Laser laser = new Laser();
 	Laser2 laser2 = new Laser2();
 	Laser3 laser3 = new Laser3();
 	Follower follower = new Follower();
+	CloneTogether2 cloneTogether2 = new CloneTogether2();
+	CloneTogether3 cloneTogether3 = new CloneTogether3();
+	Bullet bullet = new Bullet();
+	
 	private Graphics g;
 	// SpaceSeeker rocket = new SpaceSeeker();
 
@@ -216,13 +227,48 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}try {
+		}
+		try {
 			Follower = ImageIO.read(this.getClass().getResourceAsStream("Follower.png"));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		try {
+			CloneTogether2 = ImageIO.read(this.getClass().getResourceAsStream("CloneTogether.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			CloneTogether3 = ImageIO.read(this.getClass().getResourceAsStream("CloneTogether.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}try {
+			Bullet = ImageIO.read(this.getClass().getResourceAsStream("Bullet.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}try {
+			Clone2 = ImageIO.read(this.getClass().getResourceAsStream("Clone.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}try {
+			Clone3 = ImageIO.read(this.getClass().getResourceAsStream("Clone.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
 	}
 
 	void start() {
@@ -246,24 +292,31 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	}
 
 	public void drawAlien(Graphics g) {
-		g.drawImage(Clone, (int) clone.x, (int) clone.y, null);
+		g.drawImage(Clone, (int)clone.x, (int)clone.y, null);
+		g.drawImage(Clone2, (int)clone2.x, (int)clone2.y, null);
+		g.drawImage(Clone3, (int)clone3.x, (int)clone3.y, null);
 		// g.drawImage(Seeker, seeker.x, seeker.y, null);
 		g.drawImage(CloneTogether, cloneTogether.x, cloneTogether.y, null);
 		g.drawImage(Laser, laser.x, laser.y, null);
 		g.drawImage(Laser2, laser2.x, laser2.y, null);
+		g.drawImage(Bullet, bullet.x, bullet.y ,null);
 		g.drawImage(Laser3, laser3.x, laser3.y, null);
-		g.drawImage(Follower, follower.x, follower.y, null);
-		
-		if (laser.x > 800 ) {
+		g.drawImage(Follower, rocket.x + 15, rocket.y + 60, null);
+		g.drawImage(CloneTogether2, cloneTogether2.x, cloneTogether2.y, null);
+		g.drawImage(CloneTogether3, cloneTogether3.x, cloneTogether3.y, null);
+		if (laser.x > 800) {
 			g.drawImage(Warning, 20, laser.y, null);
 		}
-		if (laser2.x > 800 ) {
+		if (laser2.x > 800) {
 			g.drawImage(Warning2, 20, laser2.y, null);
 		}
-		if (laser3.x > 800 ) {
+		if (laser3.x > 800) {
 			g.drawImage(Warning3, 20, laser3.y, null);
 		}
-	}
+		
+			
+		}
+
 
 	@Override
 	public void paintComponent(Graphics g) {
@@ -294,6 +347,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 
 	void drawEnd(Graphics g) {
 		g.drawImage(EndBackground, 0, 0, null);
+		
 	}
 
 	@Override
@@ -319,11 +373,16 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		if (currentState == GAME_STATE) {
 			rocket.move();
 			clone.invade();
-			seeker.invade();
+			clone2.invade();
+			clone3.invade();
+	
 			cloneTogether.invade();
 			laser.invade();
 			laser2.invade();
 			laser3.invade();
+			cloneTogether2.invade();
+			cloneTogether3.invade();
+			follower.invade();
 		}
 
 	}
