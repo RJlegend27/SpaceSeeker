@@ -18,7 +18,7 @@ public class CloneTogether3 {
 	void invade() {
 		y+=speed;
 		if(y > 450) {
-			y = -50;
+			y = -180;
 		}
 	}
 }

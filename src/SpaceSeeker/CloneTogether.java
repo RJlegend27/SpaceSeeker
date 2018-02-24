@@ -11,14 +11,14 @@ import javax.swing.SwingUtilities;
 public class CloneTogether {
 
 	int x = 180;
-	int y = -50;
+	int y = -100;
 	int speed = 3;
 	int xspeed = 10;
 	
 	void invade() {
 		y+=speed;
 		if(y > 450) {
-			y = -50;
+			y = -100;
 		}
 	}
 }

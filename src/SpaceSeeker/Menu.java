@@ -73,7 +73,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	CloneTogether2 cloneTogether2 = new CloneTogether2();
 	CloneTogether3 cloneTogether3 = new CloneTogether3();
 	Bullet bullet = new Bullet();
-	
+
 	private Graphics g;
 	// SpaceSeeker rocket = new SpaceSeeker();
 
@@ -248,26 +248,28 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}try {
+		}
+		try {
 			Bullet = ImageIO.read(this.getClass().getResourceAsStream("Bullet.png"));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}try {
+		}
+		try {
 			Clone2 = ImageIO.read(this.getClass().getResourceAsStream("Clone.png"));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}try {
+		}
+		try {
 			Clone3 = ImageIO.read(this.getClass().getResourceAsStream("Clone.png"));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 
 	}
 
@@ -292,16 +294,17 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	}
 
 	public void drawAlien(Graphics g) {
-		g.drawImage(Clone, (int)clone.x, (int)clone.y, null);
-		g.drawImage(Clone2, (int)clone2.x, (int)clone2.y, null);
-		g.drawImage(Clone3, (int)clone3.x, (int)clone3.y, null);
+		g.drawImage(Clone, (int) clone.x, (int) clone.y, null);
+		g.drawImage(Clone2, (int) clone2.x, (int) clone2.y, null);
+		g.drawImage(Clone3, (int) clone3.x, (int) clone3.y, null);
 		// g.drawImage(Seeker, seeker.x, seeker.y, null);
 		g.drawImage(CloneTogether, cloneTogether.x, cloneTogether.y, null);
 		g.drawImage(Laser, laser.x, laser.y, null);
 		g.drawImage(Laser2, laser2.x, laser2.y, null);
-		g.drawImage(Bullet, bullet.x, bullet.y ,null);
+	//	g.drawImage(Bullet, bullet.x, bullet.y, null);
 		g.drawImage(Laser3, laser3.x, laser3.y, null);
-		g.drawImage(Follower, rocket.x + 15, rocket.y + 60, null);
+		follower.moveTo(rocket);
+		g.drawImage(Follower, follower.x, follower.y, null);
 		g.drawImage(CloneTogether2, cloneTogether2.x, cloneTogether2.y, null);
 		g.drawImage(CloneTogether3, cloneTogether3.x, cloneTogether3.y, null);
 		if (laser.x > 800) {
@@ -313,10 +316,8 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		if (laser3.x > 800) {
 			g.drawImage(Warning3, 20, laser3.y, null);
 		}
-		
-			
-		}
 
+	}
 
 	@Override
 	public void paintComponent(Graphics g) {
@@ -347,7 +348,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 
 	void drawEnd(Graphics g) {
 		g.drawImage(EndBackground, 0, 0, null);
-		
+
 	}
 
 	@Override
@@ -375,7 +376,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 			clone.invade();
 			clone2.invade();
 			clone3.invade();
-	
+
 			cloneTogether.invade();
 			laser.invade();
 			laser2.invade();
@@ -457,6 +458,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 				if (currentState == GAME_STATE) {
 
 				}
+
 			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
