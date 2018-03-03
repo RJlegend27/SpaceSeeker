@@ -2,6 +2,7 @@ package SpaceSeeker;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -290,13 +291,29 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 
 	public void drawRocket(Graphics g) {
 		g.drawImage(CurrentRocket, rocket.x, rocket.y, null);
+		for(Rectangle r: rocket.getHitboxes()) {
+			Graphics2D G2 = (Graphics2D) g;
+			G2.draw(r);
+		}
 
 	}
 
 	public void drawAlien(Graphics g) {
 		g.drawImage(Clone, (int) clone.x, (int) clone.y, null);
+		for(Rectangle r: clone.getHitboxes()) {
+			Graphics2D G2 = (Graphics2D) g;
+			G2.draw(r);
+		}
 		g.drawImage(Clone2, (int) clone2.x, (int) clone2.y, null);
+		for(Rectangle r: clone2.getHitboxes()) {
+			Graphics2D G2 = (Graphics2D) g;
+			G2.draw(r);
+		}
 		g.drawImage(Clone3, (int) clone3.x, (int) clone3.y, null);
+		for(Rectangle r: clone3.getHitboxes()) {
+			Graphics2D G2 = (Graphics2D) g;
+			G2.draw(r);
+		}
 		// g.drawImage(Seeker, seeker.x, seeker.y, null);
 		g.drawImage(CloneTogether, cloneTogether.x, cloneTogether.y, null);
 		g.drawImage(Laser, laser.x, laser.y, null);
@@ -305,6 +322,10 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		g.drawImage(Laser3, laser3.x, laser3.y, null);
 		follower.moveTo(rocket);
 		g.drawImage(Follower, follower.x, follower.y, null);
+		for(Rectangle r: follower.getHitboxes()) {
+			Graphics2D G2 = (Graphics2D) g;
+			G2.draw(r);
+		}
 		g.drawImage(CloneTogether2, cloneTogether2.x, cloneTogether2.y, null);
 		g.drawImage(CloneTogether3, cloneTogether3.x, cloneTogether3.y, null);
 		if (laser.x > 800) {
