@@ -316,10 +316,26 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		}
 		// g.drawImage(Seeker, seeker.x, seeker.y, null);
 		g.drawImage(CloneTogether, cloneTogether.x, cloneTogether.y, null);
+		for(Rectangle r: cloneTogether.getHitboxes()) {
+			Graphics2D G2 = (Graphics2D) g;
+			G2.draw(r);
+		}
 		g.drawImage(Laser, laser.x, laser.y, null);
-		g.drawImage(Laser2, laser2.x, laser2.y, null);
+		for(Rectangle r: laser.getHitboxes()) {
+			Graphics2D G2 = (Graphics2D) g;
+			G2.draw(r);
+		}
+	g.drawImage(Laser2, laser2.x, laser2.y, null);
+	for(Rectangle r: laser2.getHitboxes()) {
+		Graphics2D G2 = (Graphics2D) g;
+		G2.draw(r);
+	}
 	//	g.drawImage(Bullet, bullet.x, bullet.y, null);
 		g.drawImage(Laser3, laser3.x, laser3.y, null);
+		for(Rectangle r: laser3.getHitboxes()) {
+			Graphics2D G2 = (Graphics2D) g;
+			G2.draw(r);
+		}
 		follower.moveTo(rocket);
 		g.drawImage(Follower, follower.x, follower.y, null);
 		for(Rectangle r: follower.getHitboxes()) {
@@ -327,15 +343,26 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 			G2.draw(r);
 		}
 		g.drawImage(CloneTogether2, cloneTogether2.x, cloneTogether2.y, null);
+		for(Rectangle r: cloneTogether2.getHitboxes()) {
+			Graphics2D G2 = (Graphics2D) g;
+			G2.draw(r);
+		}
 		g.drawImage(CloneTogether3, cloneTogether3.x, cloneTogether3.y, null);
+		for(Rectangle r: cloneTogether3.getHitboxes()) {
+			Graphics2D G2 = (Graphics2D) g;
+			G2.draw(r);
+		}
 		if (laser.x > 800) {
 			g.drawImage(Warning, 20, laser.y, null);
+			
 		}
 		if (laser2.x > 800) {
 			g.drawImage(Warning2, 20, laser2.y, null);
+			
 		}
 		if (laser3.x > 800) {
 			g.drawImage(Warning3, 20, laser3.y, null);
+			
 		}
 
 	}
@@ -405,8 +432,86 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 			cloneTogether2.invade();
 			cloneTogether3.invade();
 			follower.invade();
+			checkCollision();
 		}
 
+	}
+	private void checkCollision(){
+		if(rocket.hitBoxes.get(0).intersects(follower.hitBoxes.get(0))) {
+			System.out.println("hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(0))){
+			System.out.println("cloneTogetherHit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(1))){
+			System.out.println("cloneTogetherHit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(2))){
+			System.out.println("cloneTogetherHit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(3))){
+			System.out.println("cloneTogetherHit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(4))){
+			System.out.println("cloneTogetherHit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(5))){
+			System.out.println("cloneTogetherHit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(0))){
+			System.out.println("cloneTogether2Hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(1))){
+			System.out.println("cloneTogether2Hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(2))){
+			System.out.println("cloneTogether2Hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(3))){
+			System.out.println("cloneTogether2Hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(4))){
+			System.out.println("cloneTogether2Hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(5))){
+			System.out.println("cloneTogether2Hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(0))){
+			System.out.println("cloneTogether3Hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(1))){
+			System.out.println("cloneTogether3Hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(2))){
+			System.out.println("cloneTogether3Hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(3))){
+			System.out.println("cloneTogether3Hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(4))){
+			System.out.println("cloneTogether3Hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(5))){
+			System.out.println("cloneTogether3Hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(laser.hitBoxes.get(0))) {
+			System.out.println("laser hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(laser2.hitBoxes.get(0))) {
+			System.out.println("laser hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(laser3.hitBoxes.get(0))) {
+			System.out.println("laser hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(clone.hitBoxes.get(0))) {
+			System.out.println("clone hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(clone2.hitBoxes.get(0))) {
+			System.out.println("clone2 hit");
+		}
+		if(rocket.hitBoxes.get(0).intersects(clone3.hitBoxes.get(0))) {
+			System.out.println("clone3 hit");
+		}
 	}
 
 	@Override
