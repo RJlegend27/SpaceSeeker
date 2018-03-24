@@ -1,6 +1,7 @@
 package SpaceSeeker;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -26,6 +27,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	final int END_STATE = 2;
 	int currentState = MENU_STATE;
 	JFrame frame;
+	int time;
 	JButton button;
 	Timer timer;
 	JPanel panel;
@@ -60,7 +62,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	public static BufferedImage Clone3;
 	// SpaceSeeker spaceSeeker;
 	private boolean mousePressed;
-
+	Font font;
 	Rocket rocket = new Rocket();
 	Clone clone = new Clone();
 	Clone2 clone2 = new Clone2();
@@ -101,8 +103,9 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		// button.setVisible(true);
 		frame.addMouseListener(this);
 		panel = new JPanel();
-
+		font = new Font("Arial", Font.PLAIN, 25);
 		frame.add(panel);
+
 		// instruct = new JButton("HELP");
 		// this.add(instruct);
 		// instruct.addActionListener(this);
@@ -274,6 +277,23 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 
 	}
 
+	void reload() {
+		rocket = new Rocket();
+		clone = new Clone();
+		clone2 = new Clone2();
+		clone3 = new Clone3();
+		seeker = new Seeker();
+		cloneTogether = new CloneTogether();
+		laser = new Laser();
+		laser2 = new Laser2();
+		laser3 = new Laser3();
+		follower = new Follower();
+		cloneTogether2 = new CloneTogether2();
+		cloneTogether3 = new CloneTogether3();
+		bullet = new Bullet();
+		time=0;
+	}
+
 	void start() {
 		timer = new Timer(1000 / 60, this);
 		timer.start();
@@ -291,7 +311,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 
 	public void drawRocket(Graphics g) {
 		g.drawImage(CurrentRocket, rocket.x, rocket.y, null);
-		for(Rectangle r: rocket.getHitboxes()) {
+		for (Rectangle r : rocket.getHitboxes()) {
 			Graphics2D G2 = (Graphics2D) g;
 			G2.draw(r);
 		}
@@ -300,69 +320,69 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 
 	public void drawAlien(Graphics g) {
 		g.drawImage(Clone, (int) clone.x, (int) clone.y, null);
-		for(Rectangle r: clone.getHitboxes()) {
+		for (Rectangle r : clone.getHitboxes()) {
 			Graphics2D G2 = (Graphics2D) g;
 			G2.draw(r);
 		}
 		g.drawImage(Clone2, (int) clone2.x, (int) clone2.y, null);
-		for(Rectangle r: clone2.getHitboxes()) {
+		for (Rectangle r : clone2.getHitboxes()) {
 			Graphics2D G2 = (Graphics2D) g;
 			G2.draw(r);
 		}
 		g.drawImage(Clone3, (int) clone3.x, (int) clone3.y, null);
-		for(Rectangle r: clone3.getHitboxes()) {
+		for (Rectangle r : clone3.getHitboxes()) {
 			Graphics2D G2 = (Graphics2D) g;
 			G2.draw(r);
 		}
 		// g.drawImage(Seeker, seeker.x, seeker.y, null);
 		g.drawImage(CloneTogether, cloneTogether.x, cloneTogether.y, null);
-		for(Rectangle r: cloneTogether.getHitboxes()) {
+		for (Rectangle r : cloneTogether.getHitboxes()) {
 			Graphics2D G2 = (Graphics2D) g;
 			G2.draw(r);
 		}
 		g.drawImage(Laser, laser.x, laser.y, null);
-		for(Rectangle r: laser.getHitboxes()) {
+		for (Rectangle r : laser.getHitboxes()) {
 			Graphics2D G2 = (Graphics2D) g;
 			G2.draw(r);
 		}
-	g.drawImage(Laser2, laser2.x, laser2.y, null);
-	for(Rectangle r: laser2.getHitboxes()) {
-		Graphics2D G2 = (Graphics2D) g;
-		G2.draw(r);
-	}
-	//	g.drawImage(Bullet, bullet.x, bullet.y, null);
+		g.drawImage(Laser2, laser2.x, laser2.y, null);
+		for (Rectangle r : laser2.getHitboxes()) {
+			Graphics2D G2 = (Graphics2D) g;
+			G2.draw(r);
+		}
+		// g.drawImage(Bullet, bullet.x, bullet.y, null);
 		g.drawImage(Laser3, laser3.x, laser3.y, null);
-		for(Rectangle r: laser3.getHitboxes()) {
+		for (Rectangle r : laser3.getHitboxes()) {
 			Graphics2D G2 = (Graphics2D) g;
 			G2.draw(r);
 		}
 		follower.moveTo(rocket);
 		g.drawImage(Follower, follower.x, follower.y, null);
-		for(Rectangle r: follower.getHitboxes()) {
+		for (Rectangle r : follower.getHitboxes()) {
 			Graphics2D G2 = (Graphics2D) g;
 			G2.draw(r);
 		}
 		g.drawImage(CloneTogether2, cloneTogether2.x, cloneTogether2.y, null);
-		for(Rectangle r: cloneTogether2.getHitboxes()) {
+		for (Rectangle r : cloneTogether2.getHitboxes()) {
 			Graphics2D G2 = (Graphics2D) g;
 			G2.draw(r);
 		}
 		g.drawImage(CloneTogether3, cloneTogether3.x, cloneTogether3.y, null);
-		for(Rectangle r: cloneTogether3.getHitboxes()) {
+		for (Rectangle r : cloneTogether3.getHitboxes()) {
 			Graphics2D G2 = (Graphics2D) g;
 			G2.draw(r);
 		}
 		if (laser.x > 800) {
 			g.drawImage(Warning, 20, laser.y, null);
-			
+
 		}
 		if (laser2.x > 800) {
 			g.drawImage(Warning2, 20, laser2.y, null);
-			
+
 		}
 		if (laser3.x > 800) {
 			g.drawImage(Warning3, 20, laser3.y, null);
-			
+
 		}
 
 	}
@@ -385,7 +405,12 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	}
 
 	void drawGame(Graphics g) {
+		g.setFont(font);
+		g.setColor(Color.yellow);
 		g.drawImage(GameBackground, 0, 0, null);
+		g.drawString(time/60 + "", 450, 50);
+		
+		
 	}
 
 	/*
@@ -421,6 +446,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		// TODO Auto-generated method stub
 		if (currentState == GAME_STATE) {
 			rocket.move();
+			time++;
 			clone.invade();
 			clone2.invade();
 			clone3.invade();
@@ -436,81 +462,107 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		}
 
 	}
-	private void checkCollision(){
-		if(rocket.hitBoxes.get(0).intersects(follower.hitBoxes.get(0))) {
+
+	private void checkCollision() {
+		if (rocket.hitBoxes.get(0).intersects(follower.hitBoxes.get(0))) {
 			System.out.println("hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(0))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(0))) {
 			System.out.println("cloneTogetherHit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(1))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(1))) {
 			System.out.println("cloneTogetherHit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(2))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(2))) {
 			System.out.println("cloneTogetherHit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(3))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(3))) {
 			System.out.println("cloneTogetherHit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(4))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(4))) {
 			System.out.println("cloneTogetherHit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(5))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether.hitBoxes.get(5))) {
 			System.out.println("cloneTogetherHit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(0))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(0))) {
 			System.out.println("cloneTogether2Hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(1))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(1))) {
 			System.out.println("cloneTogether2Hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(2))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(2))) {
 			System.out.println("cloneTogether2Hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(3))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(3))) {
 			System.out.println("cloneTogether2Hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(4))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(4))) {
 			System.out.println("cloneTogether2Hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(5))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether2.hitBoxes.get(5))) {
 			System.out.println("cloneTogether2Hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(0))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(0))) {
 			System.out.println("cloneTogether3Hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(1))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(1))) {
 			System.out.println("cloneTogether3Hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(2))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(2))) {
 			System.out.println("cloneTogether3Hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(3))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(3))) {
 			System.out.println("cloneTogether3Hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(4))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(4))) {
 			System.out.println("cloneTogether3Hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(5))){
+		if (rocket.hitBoxes.get(0).intersects(cloneTogether3.hitBoxes.get(5))) {
 			System.out.println("cloneTogether3Hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(laser.hitBoxes.get(0))) {
+		if (rocket.hitBoxes.get(0).intersects(laser.hitBoxes.get(0))) {
 			System.out.println("laser hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(laser2.hitBoxes.get(0))) {
+		if (rocket.hitBoxes.get(0).intersects(laser2.hitBoxes.get(0))) {
 			System.out.println("laser hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(laser3.hitBoxes.get(0))) {
+		if (rocket.hitBoxes.get(0).intersects(laser3.hitBoxes.get(0))) {
 			System.out.println("laser hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(clone.hitBoxes.get(0))) {
+		if (rocket.hitBoxes.get(0).intersects(clone.hitBoxes.get(0))) {
 			System.out.println("clone hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(clone2.hitBoxes.get(0))) {
+		if (rocket.hitBoxes.get(0).intersects(clone2.hitBoxes.get(0))) {
 			System.out.println("clone2 hit");
+			currentState = END_STATE;
 		}
-		if(rocket.hitBoxes.get(0).intersects(clone3.hitBoxes.get(0))) {
+		if (rocket.hitBoxes.get(0).intersects(clone3.hitBoxes.get(0))) {
 			System.out.println("clone3 hit");
+			currentState = END_STATE;
 		}
 	}
 
@@ -570,18 +622,18 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 
 	public void keyPressed(KeyEvent e) {
 
-		if (currentState == MENU_STATE) {
+		if (currentState != GAME_STATE) {
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 				if (currentState == MENU_STATE) {
 					currentState = GAME_STATE;
-
+					reload();
 				} else if (currentState == GAME_STATE) {
-					currentState = END_STATE;
-				} else if (currentState == END_STATE) {
-					currentState = MENU_STATE;
-				}
 
-				if (currentState == GAME_STATE) {
+					currentState = END_STATE;
+
+				} else if (currentState == END_STATE) {
+
+					currentState = MENU_STATE;
 
 				}
 

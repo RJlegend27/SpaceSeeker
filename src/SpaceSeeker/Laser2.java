@@ -9,7 +9,7 @@ public class Laser2 implements Collideable {
 	ArrayList<Rectangle> hitBoxes;
 	Random r = new Random();
 	int y = r.nextInt(260) + 20;
-	int x = 100;
+	int x = 500;
 	int speed = 0;
 	int xspeed = 10;
 

@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 public class Follower implements Collideable {
-	int x = 250;
+	int x = 500;
 	int y = 250;
 	ArrayList<Integer> trailY = new ArrayList<>();
 	ArrayList<Integer> trailX = new ArrayList<>();
