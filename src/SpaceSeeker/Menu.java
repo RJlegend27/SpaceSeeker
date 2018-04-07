@@ -63,6 +63,9 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	// SpaceSeeker spaceSeeker;
 	private boolean mousePressed;
 	Font font;
+	Font font2;
+	int blinkFont= 0;
+	boolean showEnter;
 	Rocket rocket = new Rocket();
 	Clone clone = new Clone();
 	Clone2 clone2 = new Clone2();
@@ -104,6 +107,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		frame.addMouseListener(this);
 		panel = new JPanel();
 		font = new Font("Arial", Font.PLAIN, 25);
+		font2 = new Font("Courier", Font.PLAIN, 25);
 		frame.add(panel);
 
 		// instruct = new JButton("HELP");
@@ -306,72 +310,86 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	}
 
 	void drawMenu(Graphics g) {
+		g.setFont(font);
+		g.setColor(Color.magenta);
 		g.drawImage(MenuBackground, 0, 0, null);
+		g.setFont(font2);
+		blinkFont++;
+		if(blinkFont % 10 == 0) {
+			showEnter =! showEnter;
+		}
+		if(showEnter) {
+			g.drawString("PRESS ENTER", 180, 240);
+		}
+		
+		
 	}
+	
 
 	public void drawRocket(Graphics g) {
 		g.drawImage(CurrentRocket, rocket.x, rocket.y, null);
-		for (Rectangle r : rocket.getHitboxes()) {
-			Graphics2D G2 = (Graphics2D) g;
-			G2.draw(r);
-		}
+//		for (Rectangle r : rocket.getHitboxes()) {
+//			Graphics2D G2 = (Graphics2D) g;
+//			G2.draw(r);
+//		}
 
 	}
 
 	public void drawAlien(Graphics g) {
 		g.drawImage(Clone, (int) clone.x, (int) clone.y, null);
-		for (Rectangle r : clone.getHitboxes()) {
-			Graphics2D G2 = (Graphics2D) g;
-			G2.draw(r);
-		}
+//		for (Rectangle r : clone.getHitboxes()) {
+//			Graphics2D G2 = (Graphics2D) g;
+//			G2.draw(r);
+//		}
 		g.drawImage(Clone2, (int) clone2.x, (int) clone2.y, null);
-		for (Rectangle r : clone2.getHitboxes()) {
-			Graphics2D G2 = (Graphics2D) g;
-			G2.draw(r);
-		}
+//		for (Rectangle r : clone2.getHitboxes()) {
+//			Graphics2D G2 = (Graphics2D) g;
+//			G2.draw(r);
+//		}
 		g.drawImage(Clone3, (int) clone3.x, (int) clone3.y, null);
-		for (Rectangle r : clone3.getHitboxes()) {
-			Graphics2D G2 = (Graphics2D) g;
-			G2.draw(r);
-		}
+//		for (Rectangle r : clone3.getHitboxes()) {
+//			Graphics2D G2 = (Graphics2D) g;
+//			G2.draw(r);
+//		}
 		// g.drawImage(Seeker, seeker.x, seeker.y, null);
 		g.drawImage(CloneTogether, cloneTogether.x, cloneTogether.y, null);
-		for (Rectangle r : cloneTogether.getHitboxes()) {
-			Graphics2D G2 = (Graphics2D) g;
-			G2.draw(r);
-		}
+//		for (Rectangle r : cloneTogether.getHitboxes()) {
+//			Graphics2D G2 = (Graphics2D) g;
+//			G2.draw(r);
+//		}
 		g.drawImage(Laser, laser.x, laser.y, null);
-		for (Rectangle r : laser.getHitboxes()) {
-			Graphics2D G2 = (Graphics2D) g;
-			G2.draw(r);
-		}
+//		for (Rectangle r : laser.getHitboxes()) {
+//			Graphics2D G2 = (Graphics2D) g;
+//			G2.draw(r);
+//		}
 		g.drawImage(Laser2, laser2.x, laser2.y, null);
-		for (Rectangle r : laser2.getHitboxes()) {
-			Graphics2D G2 = (Graphics2D) g;
-			G2.draw(r);
-		}
+//		for (Rectangle r : laser2.getHitboxes()) {
+//			Graphics2D G2 = (Graphics2D) g;
+//			G2.draw(r);
+//		}
 		// g.drawImage(Bullet, bullet.x, bullet.y, null);
 		g.drawImage(Laser3, laser3.x, laser3.y, null);
-		for (Rectangle r : laser3.getHitboxes()) {
-			Graphics2D G2 = (Graphics2D) g;
-			G2.draw(r);
-		}
+//		for (Rectangle r : laser3.getHitboxes()) {
+//			Graphics2D G2 = (Graphics2D) g;
+//			G2.draw(r);
+//		}
 		follower.moveTo(rocket);
 		g.drawImage(Follower, follower.x, follower.y, null);
-		for (Rectangle r : follower.getHitboxes()) {
-			Graphics2D G2 = (Graphics2D) g;
-			G2.draw(r);
-		}
+//		for (Rectangle r : follower.getHitboxes()) {
+//			Graphics2D G2 = (Graphics2D) g;
+//			G2.draw(r);
+//			
+//		}
 		g.drawImage(CloneTogether2, cloneTogether2.x, cloneTogether2.y, null);
-		for (Rectangle r : cloneTogether2.getHitboxes()) {
-			Graphics2D G2 = (Graphics2D) g;
-			G2.draw(r);
-		}
+//		for (Rectangle r : cloneTogether2.getHitboxes()) {
+//			Graphics2D G2 = (Graphics2D) g;
+//			G2.draw(r);
+//		}
 		g.drawImage(CloneTogether3, cloneTogether3.x, cloneTogether3.y, null);
-		for (Rectangle r : cloneTogether3.getHitboxes()) {
-			Graphics2D G2 = (Graphics2D) g;
-			G2.draw(r);
-		}
+//		for (Rectangle r : cloneTogether3.getHitboxes()) {
+//			Graphics2D G2 = (Graphics2D) g;
+//			G2.draw(r);
+//		}
 		if (laser.x > 800) {
 			g.drawImage(Warning, 20, laser.y, null);
 
@@ -406,10 +424,10 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 
 	void drawGame(Graphics g) {
 		g.setFont(font);
-		g.setColor(Color.yellow);
+		g.setColor(Color.red);
 		g.drawImage(GameBackground, 0, 0, null);
-		g.drawString(time/60 + "", 450, 50);
-		
+		g.drawString(time/60 + "", 400, 50);
+		g.setColor(Color.black);
 		
 	}
 
@@ -421,6 +439,10 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 
 	void drawEnd(Graphics g) {
 		g.drawImage(EndBackground, 0, 0, null);
+		g.setFont(font);
+		g.setColor(Color.RED);
+		g.drawString(time/60 + "", 250, 450);
+		g.setColor(Color.RED);
 
 	}
 
