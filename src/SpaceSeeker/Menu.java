@@ -78,7 +78,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 	Follower follower = new Follower();
 	CloneTogether2 cloneTogether2 = new CloneTogether2();
 	CloneTogether3 cloneTogether3 = new CloneTogether3();
-	Bullet bullet = new Bullet();
+
 
 	private Graphics g;
 	// SpaceSeeker rocket = new SpaceSeeker();
@@ -294,7 +294,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener, KeyLi
 		follower = new Follower();
 		cloneTogether2 = new CloneTogether2();
 		cloneTogether3 = new CloneTogether3();
-		bullet = new Bullet();
+		
 		time=0;
 	}
 
