@@ -11,7 +11,7 @@ public class Laser2 implements Collideable {
 	int y = r.nextInt(260) + 20;
 	int x = 500;
 	int speed = 0;
-	int xspeed = 10;
+	int xspeed = 8;
 
 	Laser2() {
 		hitBoxes = new ArrayList<>();
